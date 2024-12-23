@@ -3,7 +3,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/BLOG
     username: root
-    password: 1234
+    password: 나의패스워드는 비밀임
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml

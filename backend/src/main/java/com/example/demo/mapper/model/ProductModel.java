@@ -14,6 +14,15 @@ public class ProductModel {
     private boolean productStatus;
     private long quantity;
 
+    private ProductModel(long productId, String productName, String productCode, LocalDateTime createDate, LocalDateTime updateDate, long quantity) {
+        this.productId = productId;
+        this.productName = productName;
+        this.productCode = productCode;
+        this.createDate = createDate;
+        this.updateDate = updateDate;
+        this.quantity = quantity;
+    }
+
     private ProductModel(String productName, String productCode, long quantity) {
         this.productName = productName;
         this.productCode = productCode;

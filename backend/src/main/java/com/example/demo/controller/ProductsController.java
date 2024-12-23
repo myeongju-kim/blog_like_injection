@@ -1,19 +1,20 @@
 package com.example.demo.controller;
 
+import com.example.demo.dto.ProductsResponse;
 import com.example.demo.service.ProductsService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/products")
 @RequiredArgsConstructor
+@CrossOrigin("*")
 public class ProductsController {
     private final ProductsService productsService;
 
-    @PostMapping("/insert-test")
-    public void insertTest(){
-        productsService.insertTest();
+    @GetMapping
+    public ResponseEntity<ProductsResponse> getProducts(@RequestParam String productName){
+        return ResponseEntity.ok(productsService.getProducts(productName));
     }
 }
