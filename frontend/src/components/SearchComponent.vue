@@ -12,8 +12,9 @@ let productName = ref('')
       variant="outlined"
       placeholder="상품이름"
       density="compact"
+      @keyup.enter="emit('search', productName)"
     ></VTextField>
-    <VBtn class="search-button" @click="emit('search', productName.value)"> 🔍 </VBtn>
+    <VBtn class="search-button" @click="emit('search', productName)"> 🔍 </VBtn>
   </VRow>
 </template>
 

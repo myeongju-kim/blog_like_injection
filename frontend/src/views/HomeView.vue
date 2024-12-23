@@ -4,12 +4,18 @@ import TableComponent from '@/components/TableComponent.vue';
 import { $apiGet } from '@/utils/api';
 import {ref} from 'vue'
 
-const productList = ref([]);
+const totalCount = ref(0);
+const products = ref([]);
 
 const search = async (productName) => {
-  await $apiGet('/products', productName)
+  if(productName == undefined){
+    productName = '';
+  }
+
+  await $apiGet("/products", { productName })
     .then(res => {
-      productList.value = res.data.productList
+      totalCount.value = res.totalCount;
+      products.value = res.products;
     })
     .catch(err => alert(err.message))
 }
@@ -17,7 +23,10 @@ const search = async (productName) => {
 
 <template>
   <SearchComponent @search=search></SearchComponent>
-  <TableComponent></TableComponent>
+  <TableComponent 
+  :total-count="totalCount"
+  :products="products"
+  ></TableComponent>
 </template>
 
 <style>

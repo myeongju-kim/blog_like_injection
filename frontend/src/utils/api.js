@@ -6,7 +6,7 @@ const api = axios.create({
 
 export const $apiGet = (url, params = {}) => {
   return api
-    .get(url, { params })
+    .get(url,  {params} )
     .then(response => response.data)
     .catch(error => {
       throw error
